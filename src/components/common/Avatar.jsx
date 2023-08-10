@@ -87,18 +87,27 @@ function Avatar({ type, image, setImage }) {
       <div className="flex items-center justify-center">
         {type === "sm" && (
           <div className="relative h-10 w-10">
+            {/* image check is placed here so that 
+            <Image/> doesnot throw an error if image is not present */}
+            {image && (
+              <Image
+                src={image}
+                alt="avatar"
+                className="rounded-full object-cover"
+                fill
+              />
+            )}
+          </div>
+        )}
+
+        {type === "lg" && (
+          <div className="relative h-14 w-14">
             <Image
               src={image}
               alt="avatar"
               className="rounded-full object-cover"
               fill
             />
-          </div>
-        )}
-
-        {type === "lg" && (
-          <div className="relative h-14 w-14">
-            <Image src={image} alt="avatar" className="rounded-full" fill />
           </div>
         )}
 
