@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "@/utils/FirebaseConfig";
 import axios from "axios";
-import { CHECK_USER_ROUTE } from "@/utils/ApiRoutes";
+import { CHECK_USER_ROUTE, GET_MESSAGE_ROUTE } from "@/utils/ApiRoutes";
 import { reducerCases } from "@/context/constants";
 import Chat from "./Chat/Chat";
 
@@ -53,6 +53,24 @@ function Main() {
       }
     }
   });
+
+  // To display messages
+  useEffect(() => {
+    const getMessages = async () => {
+      const {
+        data: { messages },
+      } = await axios.get(
+        `${GET_MESSAGE_ROUTE}/${userInfo.id}/${currentChatUser.id}`
+      );
+      dispatch({
+        type: reducerCases.SET_MESSAGES,
+        messages,
+      });
+    };
+    if (currentChatUser?.id) {
+      getMessages();
+    }
+  }, [currentChatUser]);
 
   return (
     <>

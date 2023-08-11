@@ -33,7 +33,7 @@ function ChatLIstItem({ isContactsPage = false, data }) {
         <div className="flex border-b border-conversation-border pb-2 pt-1 pr-2">
           <div className="flex justify-between w-full">
             <span className="text-secondary line-clamp-1 text-sm">
-              {data?.about || "Available"}
+              {data?.about || "Let's Chat"}
             </span>
           </div>
         </div>

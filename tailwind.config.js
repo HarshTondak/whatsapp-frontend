@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "chat-background": "url('/chat-bg.png')",
+        // "chat-background": "url('/chat-bg.png')",
+        "chat-background": "url('/whatsapp-bg-og.jpg')",
       },
       colors: {
         secondary: "#8696a0",
